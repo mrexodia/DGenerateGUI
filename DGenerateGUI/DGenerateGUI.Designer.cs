@@ -30,12 +30,12 @@
         {
             this.buttonStartProcess = new System.Windows.Forms.Button();
             this.buttonCheckDtrace = new System.Windows.Forms.Button();
-            this.buttonTest = new System.Windows.Forms.Button();
+            this.buttonLoadFile = new System.Windows.Forms.Button();
             this.listBoxCalls = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxFilterCalls = new System.Windows.Forms.TextBox();
             this.treeViewData = new System.Windows.Forms.TreeView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxFilterData = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -44,7 +44,7 @@
             // 
             // buttonStartProcess
             // 
-            this.buttonStartProcess.Location = new System.Drawing.Point(162, 12);
+            this.buttonStartProcess.Location = new System.Drawing.Point(93, 12);
             this.buttonStartProcess.Name = "buttonStartProcess";
             this.buttonStartProcess.Size = new System.Drawing.Size(80, 23);
             this.buttonStartProcess.TabIndex = 1;
@@ -54,55 +54,57 @@
             // 
             // buttonCheckDtrace
             // 
-            this.buttonCheckDtrace.Location = new System.Drawing.Point(12, 12);
+            this.buttonCheckDtrace.Location = new System.Drawing.Point(179, 12);
             this.buttonCheckDtrace.Name = "buttonCheckDtrace";
             this.buttonCheckDtrace.Size = new System.Drawing.Size(144, 23);
-            this.buttonCheckDtrace.TabIndex = 1;
-            this.buttonCheckDtrace.Text = "Check DTrace Installation";
+            this.buttonCheckDtrace.TabIndex = 2;
+            this.buttonCheckDtrace.Text = "Check DTrace &Installation";
             this.buttonCheckDtrace.UseVisualStyleBackColor = true;
             this.buttonCheckDtrace.Click += new System.EventHandler(this.buttonCheckDtrace_Click);
             // 
-            // buttonTest
+            // buttonLoadFile
             // 
-            this.buttonTest.Location = new System.Drawing.Point(248, 12);
-            this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(75, 23);
-            this.buttonTest.TabIndex = 0;
-            this.buttonTest.Text = "Test";
-            this.buttonTest.UseVisualStyleBackColor = true;
-            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
+            this.buttonLoadFile.Location = new System.Drawing.Point(12, 12);
+            this.buttonLoadFile.Name = "buttonLoadFile";
+            this.buttonLoadFile.Size = new System.Drawing.Size(75, 23);
+            this.buttonLoadFile.TabIndex = 0;
+            this.buttonLoadFile.Text = "Load &File";
+            this.buttonLoadFile.UseVisualStyleBackColor = true;
+            this.buttonLoadFile.Click += new System.EventHandler(this.buttonLoadFile_Click);
             // 
             // listBoxCalls
             // 
             this.listBoxCalls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxCalls.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxCalls.FormattingEnabled = true;
             this.listBoxCalls.IntegralHeight = false;
             this.listBoxCalls.Location = new System.Drawing.Point(0, 26);
             this.listBoxCalls.Name = "listBoxCalls";
             this.listBoxCalls.Size = new System.Drawing.Size(254, 436);
-            this.listBoxCalls.TabIndex = 2;
+            this.listBoxCalls.TabIndex = 4;
             // 
-            // textBox1
+            // textBoxFilterCalls
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxFilterCalls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(254, 20);
-            this.textBox1.TabIndex = 3;
+            this.textBoxFilterCalls.Location = new System.Drawing.Point(0, 0);
+            this.textBoxFilterCalls.Name = "textBoxFilterCalls";
+            this.textBoxFilterCalls.Size = new System.Drawing.Size(254, 20);
+            this.textBoxFilterCalls.TabIndex = 3;
             // 
             // treeViewData
             // 
             this.treeViewData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeViewData.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeViewData.Location = new System.Drawing.Point(3, 26);
             this.treeViewData.Name = "treeViewData";
             this.treeViewData.Size = new System.Drawing.Size(506, 436);
-            this.treeViewData.TabIndex = 4;
+            this.treeViewData.TabIndex = 6;
             // 
             // splitContainer1
             // 
@@ -115,25 +117,25 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.listBoxCalls);
-            this.splitContainer1.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.textBoxFilterCalls);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.textBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.textBoxFilterData);
             this.splitContainer1.Panel2.Controls.Add(this.treeViewData);
             this.splitContainer1.Size = new System.Drawing.Size(773, 465);
             this.splitContainer1.SplitterDistance = 257;
             this.splitContainer1.TabIndex = 5;
             // 
-            // textBox2
+            // textBoxFilterData
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxFilterData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(3, 0);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(506, 20);
-            this.textBox2.TabIndex = 4;
+            this.textBoxFilterData.Location = new System.Drawing.Point(3, 0);
+            this.textBoxFilterData.Name = "textBoxFilterData";
+            this.textBoxFilterData.Size = new System.Drawing.Size(506, 20);
+            this.textBoxFilterData.TabIndex = 5;
             // 
             // DGenerateGUI
             // 
@@ -141,7 +143,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 514);
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.buttonTest);
+            this.Controls.Add(this.buttonLoadFile);
             this.Controls.Add(this.buttonCheckDtrace);
             this.Controls.Add(this.buttonStartProcess);
             this.Name = "DGenerateGUI";
@@ -160,12 +162,12 @@
 
         private System.Windows.Forms.Button buttonStartProcess;
         private System.Windows.Forms.Button buttonCheckDtrace;
-        private System.Windows.Forms.Button buttonTest;
+        private System.Windows.Forms.Button buttonLoadFile;
         private System.Windows.Forms.ListBox listBoxCalls;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxFilterCalls;
         private System.Windows.Forms.TreeView treeViewData;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxFilterData;
     }
 }
 

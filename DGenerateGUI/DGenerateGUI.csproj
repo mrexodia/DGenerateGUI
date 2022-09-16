@@ -58,6 +58,7 @@
     <Compile Include="DGenerateGUI.Designer.cs">
       <DependentUpon>DGenerateGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTraceParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DGenerateGUI.resx">

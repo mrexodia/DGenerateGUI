@@ -1,0 +1,401 @@
+struct NtGetContextThreadCALL {
+    BOOL syscallEntered = false
+    PEPROCESS EPROCESS = 0xffff9e8aef27f080
+    PETHREAD ETHREAD = 0xffff9e8aef55d080
+    PVOID caller = 0
+    struct execimage imageFile = {
+        char [15] filename = [ "notepad.exe" ]
+    }
+    KPROCESSOR_MODE PreviousMode = UserMode
+    PID pid = 0x40bc
+    TID tid = 0x1170
+    BOOL impersonating = false
+    struct _TOKEN *token = 0xffffe787edfc0060
+    TOKEN_TYPE tokenType = TokenPrimary
+    INTEGRITY_LEVEL integrity = MEDIUM
+    struct NtGetContextThread syscall = {
+        HANDLE ThreadHandle = {
+            void *h = 0xd0
+            STR name = {
+                char [256] chars = [ "\??\C:\CodeBlocks\AppInitHook\build\Release\RtlAllocateHeapHook.dll" ]
+            }
+        }
+        CONTEXT ThreadContext = {
+            UInt64 P1Home = 0x1be8fba0740
+            UInt64 P2Home = 0x1be8e14ce50
+            UInt64 P3Home = 0
+            UInt64 P4Home = 0x200000
+            UInt64 P5Home = 0x442e3acc30
+            UInt64 P6Home = 0x7ffb1fc91374
+            UInt32 ContextFlags = 0x100001
+            UInt32 MxCsr = 0x1be
+            UInt16 SegCs = 0xc280
+            UInt16 SegDs = 0x1fdd
+            UInt16 SegEs = 0x7ffb
+            UInt16 SegFs = 0
+            UInt16 SegGs = 0x4430
+            UInt16 SegSs = 0x8e13
+            UInt32 EFlags = 0x1be
+            UInt64 Dr0 = 0x1b9
+            UInt64 Dr1 = 0x442e3ace64
+            UInt64 Dr2 = 0x442e3acff0
+            UInt64 Dr3 = 0x442e3ad000
+            UInt64 Dr6 = 0x442e3ace70
+            UInt64 Dr7 = 0x442e3ace70
+            UInt64 Rax = 0x7ffb1fc9121f
+            UInt64 Rcx = 0xf46857d4
+            UInt64 Rdx = 0x20
+            UInt64 Rbx = 0
+            UInt64 Rsp = 0
+            UInt64 Rbp = 0xf46857d4
+            UInt64 Rsi = 0x7f
+            UInt64 Rdi = 0x1be8e130000
+            UInt64 R8 = 0x1be8e130150
+            UInt64 R9 = 0x442e3acff0
+            UInt64 R10 = 0x7ffb1fc8dc6b
+            UInt64 R11 = 0
+            UInt64 R12 = 0x442e3acd50
+            UInt64 R13 = 0x442e3ad000
+            UInt64 R14 = 0x20
+            UInt64 R15 = 0x442e3ace64
+            UInt64 Rip = 0x1be6f00006f
+            struct _XSAVE_FORMAT FltSave = {
+                UInt16 ControlWord = 0x8f50
+                UInt16 StatusWord = 0x8e13
+                UInt8 TagWord = 0xbe
+                UInt8 Reserved1 = 0x1
+                UInt16 ErrorOpcode = 0
+                UInt32 ErrorOffset = 0x110
+                UInt16 ErrorSelector = 0
+                UInt16 Reserved2 = 0
+                UInt32 DataOffset = 0x15e
+                UInt16 DataSelector = 0
+                UInt16 Reserved3 = 0
+                UInt32 MxCsr = 0x8e130150
+                UInt32 MxCsr_Mask = 0x1be
+                struct _M128A [8] FloatRegisters = [ 
+                    struct _M128A {
+                        UInt64 Low = 0x1be8e155940
+                        Int64 High = 0x400
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x800001
+                        Int64 High = 0x89000188
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x6f00006f
+                        Int64 High = 0x89000188
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x6ff423f265f9
+                        Int64 High = 0x1beb80001b9
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0
+                        Int64 High = 0x442e3ace70
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x442e57e000
+                        Int64 High = 0x442e3ace48
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0
+                        Int64 High = 0x7ffb1fc9df4c
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x442e3ad110
+                        Int64 High = 0x7ffb1fc8a613
+                    }
+                ]
+                struct _M128A [16] XmmRegisters = [ 
+                    struct _M128A {
+                        UInt64 Low = 0x1be8fba0000
+                        Int64 High = 0x1be8fba0f68
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x1be8df20000
+                        Int64 High = 0x442e3ace70
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x442e3acd00
+                        Int64 High = 0xe5
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0
+                        Int64 High = 0x1be8fba0f70
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0
+                        Int64 High = 0x1
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x1be8fba0f60
+                        Int64 High = 0x1be8fba0858
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0
+                        Int64 High = 0x1be8e1578d8
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x1be8fba0150
+                        Int64 High = 0x106
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x7f
+                        Int64 High = 0x7f
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x1be8fba0f60
+                        Int64 High = 0x1be8e1578e0
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x7f
+                        Int64 High = 0x1
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x1be8e1578d0
+                        Int64 High = 0x440000006f
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0
+                        Int64 High = 0x21
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x1be8fba0150
+                        Int64 High = 0xe5
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x4e
+                        Int64 High = 0x1be8fba0150
+                    }, 
+                    struct _M128A {
+                        UInt64 Low = 0x1be8e157ae0
+                        Int64 High = 0x7f
+                    }
+                ]
+                UInt8 [96] Reserved4 = [ 0, 0, 0x13, 0x8e, 0xbe, 0x1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xd0, 0x78, 0x15, 0x8e, 0xbe, 0x1, 0, 0, 0x7f, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x58, 0xe, 0, 0, 0, 0, 0, 0, 0x94, 0xd2, 0x5b, 0x1e, 0xfb, 0x7f, 0, 0, 0xe8, 0x91, 0x1, 0, 0, 0, 0, 0, 0, 0x1, 0x13, 0x8e, 0xbe, 0x1, 0, 0, 0x1, 0xcf, 0x3a, 0x2e, 0x44, 0, 0, 0, 0x10, 0x2, 0, 0, 0, 0, 0, 0 ]
+            }
+            struct _M128A [2] Header = [ 
+                struct _M128A {
+                    UInt64 Low = 0x1be8e138f50
+                    Int64 High = 0x110
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x15e
+                    Int64 High = 0x1be8e130150
+                }
+            ]
+            struct _M128A [8] Legacy = [ 
+                struct _M128A {
+                    UInt64 Low = 0x1be8e155940
+                    Int64 High = 0x400
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x800001
+                    Int64 High = 0x89000188
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x6f00006f
+                    Int64 High = 0x89000188
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x6ff423f265f9
+                    Int64 High = 0x1beb80001b9
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0x442e3ace70
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x442e57e000
+                    Int64 High = 0x442e3ace48
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0x7ffb1fc9df4c
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x442e3ad110
+                    Int64 High = 0x7ffb1fc8a613
+                }
+            ]
+            struct _M128A Xmm0 = {
+                UInt64 Low = 0x1be8fba0000
+                Int64 High = 0x1be8fba0f68
+            }
+            struct _M128A Xmm1 = {
+                UInt64 Low = 0x1be8df20000
+                Int64 High = 0x442e3ace70
+            }
+            struct _M128A Xmm2 = {
+                UInt64 Low = 0x442e3acd00
+                Int64 High = 0xe5
+            }
+            struct _M128A Xmm3 = {
+                UInt64 Low = 0
+                Int64 High = 0x1be8fba0f70
+            }
+            struct _M128A Xmm4 = {
+                UInt64 Low = 0
+                Int64 High = 0x1
+            }
+            struct _M128A Xmm5 = {
+                UInt64 Low = 0x1be8fba0f60
+                Int64 High = 0x1be8fba0858
+            }
+            struct _M128A Xmm6 = {
+                UInt64 Low = 0
+                Int64 High = 0x1be8e1578d8
+            }
+            struct _M128A Xmm7 = {
+                UInt64 Low = 0x1be8fba0150
+                Int64 High = 0x106
+            }
+            struct _M128A Xmm8 = {
+                UInt64 Low = 0x7f
+                Int64 High = 0x7f
+            }
+            struct _M128A Xmm9 = {
+                UInt64 Low = 0x1be8fba0f60
+                Int64 High = 0x1be8e1578e0
+            }
+            struct _M128A Xmm10 = {
+                UInt64 Low = 0x7f
+                Int64 High = 0x1
+            }
+            struct _M128A Xmm11 = {
+                UInt64 Low = 0x1be8e1578d0
+                Int64 High = 0x440000006f
+            }
+            struct _M128A Xmm12 = {
+                UInt64 Low = 0
+                Int64 High = 0x21
+            }
+            struct _M128A Xmm13 = {
+                UInt64 Low = 0x1be8fba0150
+                Int64 High = 0xe5
+            }
+            struct _M128A Xmm14 = {
+                UInt64 Low = 0x4e
+                Int64 High = 0x1be8fba0150
+            }
+            struct _M128A Xmm15 = {
+                UInt64 Low = 0x1be8e157ae0
+                Int64 High = 0x7f
+            }
+            struct _M128A [26] VectorRegister = [ 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0x442e3aceb8
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x442e3acec8
+                    Int64 High = 0x7ffb1fcae2af
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0x7000106
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x191e8
+                    Int64 High = 0x7000106
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0x1a000
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0x1be8e1578d0
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x1000
+                    Int64 High = 0x1be00000004
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x75ae8
+                    Int64 High = 0x76000
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x20b
+                    Int64 High = 0xffffffff
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x210
+                    Int64 High = 0x200
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x2
+                    Int64 High = 0x1be8fba0000
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0
+                    Int64 High = 0x7ffb1d751fae
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0x6ff423f261f9
+                    Int64 High = 0x7ffb1e5c157e
+                }, 
+                struct _M128A {
+                    UInt64 Low = 0xffffffff
+                    Int64 High = 0xd0
+                }
+            ]
+            UInt64 VectorControl = 0
+            UInt64 DebugControl = 0x298c
+            UInt64 LastBranchToRip = 0x30
+            UInt64 LastBranchFromRip = 0x7ffb1d79d850
+            UInt64 LastExceptionToRip = 0
+            UInt64 LastExceptionFromRip = 0
+        }
+        NTSTATUS result = STATUS_SUCCESS
+    }
+}
