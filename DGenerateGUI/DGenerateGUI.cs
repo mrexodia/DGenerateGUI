@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Dynamic;
 using Newtonsoft.Json;
+using Microsoft.VisualBasic;
 
 namespace DGenerateGUI
 {
@@ -39,13 +40,40 @@ namespace DGenerateGUI
             _filterTimer.Tick += (sender, e) =>
             {
                 _filterTimer.Stop();
+                var selectedId = (listBoxCalls.SelectedValue as DTraceCall).Id;
                 listBoxCalls.DataSource = filterCalls(textBoxFilterCalls.Text.Trim());
+                // Try to recover the selected id
+                selectId(selectedId);
             };
+            listBoxCalls.KeyDown += ListBoxCalls_KeyDown;
         }
 
-        private void _filterTimer_Tick(object sender, EventArgs e)
+        private void selectId(int id)
         {
-            throw new NotImplementedException();
+            var data = listBoxCalls.DataSource as List<DTraceCall>;
+            if (data == null)
+                return;
+
+            for (var i = 0; i < data.Count; i++)
+            {
+                if (data[i].Id == id)
+                {
+                    listBoxCalls.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        private void ListBoxCalls_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.G)
+            {
+                var entered = Interaction.InputBox("#ID", "Go to", "");
+                if (int.TryParse(entered, out int value))
+                {
+                    selectId(value);
+                }
+            }
         }
 
         private List<DTraceCall> filterCalls(string filter)
@@ -60,6 +88,8 @@ namespace DGenerateGUI
                 if (filter.StartsWith("handle:", StringComparison.InvariantCultureIgnoreCase))
                 {
                     filter = filter.Substring(filter.IndexOf(':') + 1);
+
+                    // Filter by handle
                     foreach (var call in _traceCalls)
                     {
                         call.Data.Visit(call.Function, (name, value) =>
@@ -85,10 +115,11 @@ namespace DGenerateGUI
                 else if (filter.StartsWith("raw:", StringComparison.InvariantCultureIgnoreCase))
                 {
                     filter = filter.Substring(filter.IndexOf(':') + 1);
+
                     // Filter by raw content (slow)
                     foreach (var call in _traceCalls)
                     {
-                        foreach (var line in call.Lines)
+                        foreach (var line in call.RawLines)
                         {
                             if (line.ContainsCase(filter))
                             {
@@ -189,6 +220,8 @@ namespace DGenerateGUI
 
             treeViewData.Nodes.Clear();
             var root = selectedCall.Data.Struct;
+            // Add a dummy node with the line from the source file
+            treeViewData.Nodes.Add($"line => {selectedCall.LineNumber}");
             foreach (var kv in root)
             {
                 treeViewData.Nodes.Add(ConvertNode(kv.Key, kv.Value));

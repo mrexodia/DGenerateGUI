@@ -112,13 +112,15 @@ namespace DGenerateGUI
 
     public class DTraceCall
     {
+        public int Id;
         public string Function;
         public MemberValue Data;
-        public string[] Lines;
+        public int LineNumber;
+        public string[] RawLines;
 
         public override string ToString()
         {
-            return Function;
+            return $"#{Id}\t{Function}";
         }
     }
 
@@ -175,12 +177,14 @@ namespace DGenerateGUI
         private List<string> _context = new List<string>();
         private int _lineNumber = 0;
         private ParseState _state;
+        private int _callId = 0;
 
         class ParseState
         {
-            public ParseState(string name)
+            public ParseState(string name, int line)
             {
                 Name = name; ;
+                Line = line;
                 Root = new MemberValue(name, "", new Dictionary<string, MemberValue>(), null);
                 _stack.Push(Root);
             }
@@ -189,6 +193,7 @@ namespace DGenerateGUI
             private Stack<MemberValue> _stack = new Stack<MemberValue>();
 
             public string Name;
+            public int Line;
             public MemberValue Root;
 
             [JsonIgnore]
@@ -257,9 +262,11 @@ namespace DGenerateGUI
 
             Call?.Invoke(this, new DTraceCall
             {
-                Lines = _context.ToArray(),
+                Id = _callId++,
+                RawLines = _context.ToArray(),
                 Function = fstruct.Name,
                 Data = fstruct.Root,
+                LineNumber = fstruct.Line,
             });
 
             // Clear the context
@@ -283,7 +290,7 @@ namespace DGenerateGUI
                 }
                 else
                 {
-                    _state = new ParseState(m.Groups[1].Value);
+                    _state = new ParseState(m.Groups[1].Value, _lineNumber);
                 }
             }
             else
@@ -367,7 +374,7 @@ namespace DGenerateGUI
                                 }
                                 else
                                 {
-                                    _state = new ParseState(m.Groups[1].Value);
+                                    _state = new ParseState(m.Groups[1].Value, _lineNumber);
                                 }
                             }
 

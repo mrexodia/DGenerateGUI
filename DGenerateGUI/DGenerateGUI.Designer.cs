@@ -132,10 +132,12 @@
             this.textBoxFilterData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxFilterData.Enabled = false;
             this.textBoxFilterData.Location = new System.Drawing.Point(3, 0);
             this.textBoxFilterData.Name = "textBoxFilterData";
             this.textBoxFilterData.Size = new System.Drawing.Size(770, 20);
             this.textBoxFilterData.TabIndex = 5;
+            this.textBoxFilterData.Text = "TODO";
             // 
             // DGenerateGUI
             // 
