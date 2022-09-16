@@ -1,0 +1,135 @@
+struct NtOpenFileCALL {
+    BOOL syscallEntered = false
+    PEPROCESS EPROCESS = 0xffff9e8aef27f080
+    PETHREAD ETHREAD = 0xffff9e8aef55d080
+    PVOID caller = 0
+    struct execimage imageFile = {
+        char [15] filename = [ "notepad.exe" ]
+    }
+    KPROCESSOR_MODE PreviousMode = UserMode
+    PID pid = 0x40bc
+    TID tid = 0x1170
+    BOOL impersonating = false
+    struct _TOKEN *token = 0xffffe787edfc0060
+    TOKEN_TYPE tokenType = TokenPrimary
+    INTEGRITY_LEVEL integrity = MEDIUM
+    struct NtOpenFile syscall = {
+        PHANDLE FileHandle = 0xc0
+        ACCESS_MASK_FILE DesiredAccess = {
+            BIT1 READ_DATA :1 = 0x1
+            BIT2 ADD_FILE :1 = 0
+            BIT3 APPEND_DATA :1 = 0
+            BIT4 READ_EA :1 = 0
+            BIT5 WRITE_EA :1 = 0
+            BIT6 EXECUTE :1 = 0x1
+            BIT7 DELETE_CHILD :1 = 0
+            BIT8 READ_ATTRIBUTES :1 = 0
+            BIT9 WRITE_ATTRIBUTES :1 = 0
+            BIT10 unused1 :1 = 0
+            BIT11 unused2 :1 = 0
+            BIT12 unused3 :1 = 0
+            BIT13 unused4 :1 = 0
+            BIT14 unused5 :1 = 0
+            BIT15 unused6 :1 = 0
+            BIT16 unused9 :1 = 0
+            BIT17 DELETE :1 = 0
+            BIT18 READ_CONTROL :1 = 0
+            BIT19 WRITE_DAC :1 = 0
+            BIT20 WRITE_OWNER :1 = 0
+            BIT21 SYNCHRONIZE :1 = 0x1
+            BIT22 unused10 :1 = 0
+            BIT23 unused11 :1 = 0
+            BIT24 unused12 :1 = 0
+            BIT25 ACCESS_SYSTEM_SECURITY :1 = 0
+            BIT26 MAXIUM :1 = 0
+            BIT27 unused13 :1 = 0
+            BIT28 unused14 :1 = 0
+            BIT29 GENERIC_ALL :1 = 0
+            BIT30 GENERIC_EXECUTE :1 = 0
+            BIT31 GENERIC_WRITE :1 = 0
+            BIT32 GENERIC_READ :1 = 0
+        }
+        OBJECT_ATTRIBUTES ObjectAttributes = {
+            ULONG Length = 0x30
+            HANDLE RootDirectory = {
+                void *h = 0
+                STR name = {
+                    char [256] chars = [ "" ]
+                }
+            }
+            UNICODE_STRING ObjectName = {
+                USHORT Length = 0x82
+                USHORT MaximumLength = 0x100
+                STR Buffer = {
+                    char [256] chars = [ "\??\C:\CodeBlocks\AppInitHook\build\Release\AppInitDispatcher.dll" ]
+                }
+            }
+            OBJECT_ATTRIBUTES_ATTRIBUTES Attributes = {
+                BIT1 PROTECT_CLOSE = 0
+                BIT2 INHERIT = 0
+                BIT3 AUDIT_OBJECT_CLOSE = 0
+                BIT4 UNUSED = 0
+                BIT5 PERMANENT = 0
+                BIT6 EXCLUSIVE = 0
+                BIT7 CASE_INSENSITIVE = 0x1
+                BIT8 OPENIF = 0
+                BIT9 OPENLINK = 0
+                BIT10 KERNEL_HANDLE = 0
+                BIT11 FORCE_ACCESS_CHECK = 0
+                BIT12 IGNORE_IMPERSONATED_DEVICEMAP = 0x1
+                BIT13 DONT_REPARSE = 0
+            }
+            SECURITY_DESCRIPTOR SecurityDescriptor = {
+                UCHAR Revision = 0
+                UCHAR Sbz1 = 0
+                USHORT Control = 0
+                void *Owner = 0
+                void *Group = 0
+                void *Sacl = 0
+                void *Dacl = 0
+            }
+            SECURITY_QUALITY_OF_SERVICE SecurityQualityOfService = {
+                ULONG Length = 0
+                enum ImpersonationLevel = Anonymous
+                UCHAR ContextTrackingMode = 0
+                UCHAR EffectiveOnly = 0
+            }
+        }
+        IO_STATUS_BLOCK IoStatusBlock = {
+            Int32 Status = 0
+            void *Pointer = 0
+            UInt64 Information = 0x1
+        }
+        FILE_SHARE_ACCESS ShareAccess = {
+            BIT1 FILE_SHARE_READ :1 = 0x1
+            BIT2 FILE_SHARE_WRITE :1 = 0
+            BIT3 FILE_SHARE_DELETE :1 = 0x1
+        }
+        FILE_OPTIONS OpenOptions = {
+            BIT1 DIRECTORY_FILE = 0
+            BIT2 WRITE_THROUGH = 0
+            BIT3 SEQUENTIAL_ONLY = 0
+            BIT4 NO_INTERMEDIATE_BUFFERING = 0
+            BIT5 SYNCHRONOUS_IO_ALERT = 0
+            BIT6 SYNCHRONOUS_IO_NONALERT = 0x1
+            BIT7 NON_DIRECTORY_FILE = 0x1
+            BIT8 CREATE_TREE_CONNECTION = 0
+            BIT9 COMPLETE_IF_OPLOCKED = 0
+            BIT10 NO_EA_KNOWLEDGE = 0
+            BIT11 OPEN_REMOTE_INSTANCE = 0
+            BIT12 RANDOM_ACCESS = 0
+            BIT13 DELETE_ON_CLOSE = 0
+            BIT14 OPEN_BY_FILE_ID = 0
+            BIT15 OPEN_FOR_BACKUP_INTENT = 0
+            BIT16 NO_COMPRESSION = 0
+            BIT17 OPEN_REQUIRING_OPLOCK = 0
+            BIT18 DISALLOW_EXCLUSIVE = 0
+            BIT19 SESSION_AWARE = 0
+            BIT20 RESERVE_OPFILTER = 0
+            BIT21 OPEN_REPARSE_POINT = 0
+            BIT22 OPEN_NO_RECALL = 0
+            BIT23 OPEN_FOR_FREE_SPACE_QUERY = 0
+        }
+        NTSTATUS result = STATUS_SUCCESS
+    }
+}

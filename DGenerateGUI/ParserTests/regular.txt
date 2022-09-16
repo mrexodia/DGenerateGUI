@@ -1,0 +1,108 @@
+struct NtDuplicateTokenCALL {
+    BOOL syscallEntered = false
+    PEPROCESS EPROCESS = 0xffff9e8aef27f080
+    PETHREAD ETHREAD = 0xffff9e8aef55d080
+    PVOID caller = 0
+    struct execimage imageFile = {
+        char [15] filename = [ "notepad.exe" ]
+    }
+    KPROCESSOR_MODE PreviousMode = UserMode
+    PID pid = 0x40bc
+    TID tid = 0x1170
+    BOOL impersonating = false
+    struct _TOKEN *token = 0xffffe787edfc0060
+    TOKEN_TYPE tokenType = TokenPrimary
+    INTEGRITY_LEVEL integrity = MEDIUM
+    struct NtDuplicateToken syscall = {
+        HANDLE ExistingTokenHandle = {
+            void *h = 0xb8
+            STR name = {
+                char [256] chars = [ "" ]
+            }
+        }
+        ACCESS_MASK_TOKEN DesiredAccess = {
+            BIT1 ASSIGN_PRIMARY = 0
+            BIT2 DUPLICATE = 0
+            BIT3 IMPERSONATE = 0x1
+            BIT4 QUERY = 0x1
+            BIT5 QUERY_SOURCE = 0
+            BIT6 ADJUST_PRIVILEGES = 0
+            BIT7 ADJUST_GROUPS = 0
+            BIT8 ADJUST_DEFAULT = 0
+            BIT9 ADJUST_SESSIONID = 0
+            BIT10 BIT10 = 0
+            BIT11 BIT11 = 0
+            BIT12 BIT12 = 0
+            BIT13 BIT13 = 0
+            BIT14 BIT14 = 0
+            BIT15 BIT15 = 0
+            BIT16 BIT16 = 0
+            BIT17 DELETE = 0
+            BIT18 READ_CONTROL = 0
+            BIT19 WRITE_DAC = 0
+            BIT20 WRITE_OWNER = 0
+            BIT21 SYNCHRONIZE = 0
+            BIT22 BIT22 = 0
+            BIT23 BIT23 = 0
+            BIT24 BIT24 = 0
+            BIT25 BIT25 = 0
+            BIT26 MAXIMUM = 0
+            BIT27 BIT27 = 0
+            BIT28 BIT28 = 0
+            BIT29 BIT29 = 0
+            BIT30 GENERIC_EXECUTE = 0
+            BIT32 GENERIC_READ = 0
+            BIT31 GENERIC_WRITE = 0
+        }
+        OBJECT_ATTRIBUTES ObjectAttributes = {
+            ULONG Length = 0x30
+            HANDLE RootDirectory = {
+                void *h = 0
+                STR name = {
+                    char [256] chars = [ "" ]
+                }
+            }
+            UNICODE_STRING ObjectName = {
+                USHORT Length = 0
+                USHORT MaximumLength = 0
+                STR Buffer = {
+                    char [256] chars = [ "" ]
+                }
+            }
+            OBJECT_ATTRIBUTES_ATTRIBUTES Attributes = {
+                BIT1 PROTECT_CLOSE = 0
+                BIT2 INHERIT = 0
+                BIT3 AUDIT_OBJECT_CLOSE = 0
+                BIT4 UNUSED = 0
+                BIT5 PERMANENT = 0
+                BIT6 EXCLUSIVE = 0
+                BIT7 CASE_INSENSITIVE = 0
+                BIT8 OPENIF = 0
+                BIT9 OPENLINK = 0
+                BIT10 KERNEL_HANDLE = 0
+                BIT11 FORCE_ACCESS_CHECK = 0
+                BIT12 IGNORE_IMPERSONATED_DEVICEMAP = 0
+                BIT13 DONT_REPARSE = 0
+            }
+            SECURITY_DESCRIPTOR SecurityDescriptor = {
+                UCHAR Revision = 0
+                UCHAR Sbz1 = 0
+                USHORT Control = 0
+                void *Owner = 0
+                void *Group = 0
+                void *Sacl = 0
+                void *Dacl = 0
+            }
+            SECURITY_QUALITY_OF_SERVICE SecurityQualityOfService = {
+                ULONG Length = 0xc
+                enum ImpersonationLevel = Impersonation
+                UCHAR ContextTrackingMode = 0x1
+                UCHAR EffectiveOnly = 0
+            }
+        }
+        BOOLEAN EffectiveOnly = 0
+        TOKEN_TYPE TokenType = TokenImpersonation
+        PHANDLE NewTokenHandle = 0xbc
+        NTSTATUS result = STATUS_SUCCESS
+    }
+}

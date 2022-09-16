@@ -31,6 +31,15 @@
             this.buttonStartProcess = new System.Windows.Forms.Button();
             this.buttonCheckDtrace = new System.Windows.Forms.Button();
             this.buttonTest = new System.Windows.Forms.Button();
+            this.listBoxCalls = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.treeViewData = new System.Windows.Forms.TreeView();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonStartProcess
@@ -63,16 +72,86 @@
             this.buttonTest.UseVisualStyleBackColor = true;
             this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
             // 
+            // listBoxCalls
+            // 
+            this.listBoxCalls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxCalls.FormattingEnabled = true;
+            this.listBoxCalls.IntegralHeight = false;
+            this.listBoxCalls.Location = new System.Drawing.Point(0, 26);
+            this.listBoxCalls.Name = "listBoxCalls";
+            this.listBoxCalls.Size = new System.Drawing.Size(254, 436);
+            this.listBoxCalls.TabIndex = 2;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(254, 20);
+            this.textBox1.TabIndex = 3;
+            // 
+            // treeViewData
+            // 
+            this.treeViewData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeViewData.Location = new System.Drawing.Point(3, 26);
+            this.treeViewData.Name = "treeViewData";
+            this.treeViewData.Size = new System.Drawing.Size(506, 436);
+            this.treeViewData.TabIndex = 4;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(12, 41);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.listBoxCalls);
+            this.splitContainer1.Panel1.Controls.Add(this.textBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.textBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.treeViewData);
+            this.splitContainer1.Size = new System.Drawing.Size(773, 465);
+            this.splitContainer1.SplitterDistance = 257;
+            this.splitContainer1.TabIndex = 5;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Location = new System.Drawing.Point(3, 0);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(506, 20);
+            this.textBox2.TabIndex = 4;
+            // 
             // DGenerateGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(793, 514);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.buttonCheckDtrace);
             this.Controls.Add(this.buttonStartProcess);
             this.Name = "DGenerateGUI";
             this.Text = "D-Generate";
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -82,6 +161,11 @@
         private System.Windows.Forms.Button buttonStartProcess;
         private System.Windows.Forms.Button buttonCheckDtrace;
         private System.Windows.Forms.Button buttonTest;
+        private System.Windows.Forms.ListBox listBoxCalls;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TreeView treeViewData;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 
