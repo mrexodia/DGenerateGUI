@@ -82,7 +82,7 @@
             this.listBoxCalls.IntegralHeight = false;
             this.listBoxCalls.Location = new System.Drawing.Point(0, 26);
             this.listBoxCalls.Name = "listBoxCalls";
-            this.listBoxCalls.Size = new System.Drawing.Size(254, 436);
+            this.listBoxCalls.Size = new System.Drawing.Size(384, 513);
             this.listBoxCalls.TabIndex = 4;
             // 
             // textBoxFilterCalls
@@ -92,7 +92,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxFilterCalls.Location = new System.Drawing.Point(0, 0);
             this.textBoxFilterCalls.Name = "textBoxFilterCalls";
-            this.textBoxFilterCalls.Size = new System.Drawing.Size(254, 20);
+            this.textBoxFilterCalls.Size = new System.Drawing.Size(384, 20);
             this.textBoxFilterCalls.TabIndex = 3;
             // 
             // treeViewData
@@ -103,7 +103,7 @@
             this.treeViewData.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeViewData.Location = new System.Drawing.Point(3, 26);
             this.treeViewData.Name = "treeViewData";
-            this.treeViewData.Size = new System.Drawing.Size(506, 436);
+            this.treeViewData.Size = new System.Drawing.Size(770, 513);
             this.treeViewData.TabIndex = 6;
             // 
             // splitContainer1
@@ -123,8 +123,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.textBoxFilterData);
             this.splitContainer1.Panel2.Controls.Add(this.treeViewData);
-            this.splitContainer1.Size = new System.Drawing.Size(773, 465);
-            this.splitContainer1.SplitterDistance = 257;
+            this.splitContainer1.Size = new System.Drawing.Size(1167, 542);
+            this.splitContainer1.SplitterDistance = 387;
             this.splitContainer1.TabIndex = 5;
             // 
             // textBoxFilterData
@@ -134,14 +134,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxFilterData.Location = new System.Drawing.Point(3, 0);
             this.textBoxFilterData.Name = "textBoxFilterData";
-            this.textBoxFilterData.Size = new System.Drawing.Size(506, 20);
+            this.textBoxFilterData.Size = new System.Drawing.Size(770, 20);
             this.textBoxFilterData.TabIndex = 5;
             // 
             // DGenerateGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 514);
+            this.ClientSize = new System.Drawing.Size(1187, 591);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.buttonLoadFile);
             this.Controls.Add(this.buttonCheckDtrace);

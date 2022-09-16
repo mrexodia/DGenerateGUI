@@ -85,6 +85,29 @@ namespace DGenerateGUI
             else
                 return $"{PrettyType} => {String}";
         }
+
+        public bool Visit(string name, Func<string, MemberValue, bool> visitor)
+        {
+            if (!visitor(name, this))
+                return false;
+            if(Struct != null)
+            {
+                foreach(var kv in Struct)
+                {
+                    if (!kv.Value.Visit(kv.Key, visitor))
+                        return false;
+                }
+            }
+            else if(Array != null)
+            {
+                for(var i = 0; i < Array.Count;i++)
+                {
+                    if (!Array[i].Visit($"[{i}]", visitor))
+                        return false;
+                }
+            }
+            return true;
+        }
     }
 
     public class DTraceCall

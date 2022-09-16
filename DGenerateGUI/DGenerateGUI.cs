@@ -17,12 +17,100 @@ namespace DGenerateGUI
 {
     public partial class DGenerateGUI : Form
     {
+        private List<DTraceCall> _traceCalls = new List<DTraceCall>();
+        private Timer _filterTimer = new Timer
+        {
+            Interval = 500,
+        };
+
         public DGenerateGUI()
         {
             InitializeComponent();
 
             Icon = Icon.ExtractAssociatedIcon(System.Reflection.Assembly.GetExecutingAssembly().Location);
             listBoxCalls.SelectedValueChanged += ListBoxCalls_SelectedValueChanged;
+
+            // Handle call filtering
+            textBoxFilterCalls.TextChanged += (sender, e) =>
+            {
+                _filterTimer.Stop();
+                _filterTimer.Start();
+            };
+            _filterTimer.Tick += (sender, e) =>
+            {
+                _filterTimer.Stop();
+                listBoxCalls.DataSource = filterCalls(textBoxFilterCalls.Text.Trim());
+            };
+        }
+
+        private void _filterTimer_Tick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private List<DTraceCall> filterCalls(string filter)
+        {
+            if (string.IsNullOrEmpty(filter))
+            {
+                return _traceCalls;
+            }
+            else
+            {
+                var result = new List<DTraceCall>();
+                if (filter.StartsWith("handle:", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    filter = filter.Substring(filter.IndexOf(':') + 1);
+                    foreach (var call in _traceCalls)
+                    {
+                        call.Data.Visit(call.Function, (name, value) =>
+                        {
+                            if (value.Type == "HANDLE")
+                            {
+                                foreach (var kv in value.Struct)
+                                {
+                                    if (kv.Value.String != null)
+                                    {
+                                        if (kv.Value.String.ContainsCase(filter))
+                                        {
+                                            result.Add(call);
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
+                            return true;
+                        });
+                    }
+                }
+                else if (filter.StartsWith("raw:", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    filter = filter.Substring(filter.IndexOf(':') + 1);
+                    // Filter by raw content (slow)
+                    foreach (var call in _traceCalls)
+                    {
+                        foreach (var line in call.Lines)
+                        {
+                            if (line.ContainsCase(filter))
+                            {
+                                result.Add(call);
+                                break;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // Filter by function name
+                    foreach (var call in _traceCalls)
+                    {
+                        if (call.Function.ContainsCase(filter))
+                        {
+                            result.Add(call);
+                        }
+                    }
+                }
+                return result;
+            }
         }
 
         private void buttonCheckDtrace_Click(object sender, EventArgs e)
@@ -34,8 +122,6 @@ namespace DGenerateGUI
         {
             MessageBox.Show("TODO");
         }
-
-        private List<DTraceCall> _traceCalls = new List<DTraceCall>();
 
         private void buttonLoadFile_Click(object sender, EventArgs e)
         {
@@ -53,13 +139,11 @@ namespace DGenerateGUI
                 var parser = new DTraceParser();
                 parser.ParseError += (obj, error) =>
                 {
-                    if(error.Fatal)
+                    if (error.Fatal)
                         MessageBox.Show(this, $"Error at line {error.Line}: {error.Error}\nContext:\n{error.PrettyError}", "Parse error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 };
                 parser.Call += (obj, call) =>
                 {
-                    // Save some memory for the test
-                    call.Lines = null;
                     _traceCalls.Add(call);
                 };
                 while (!stop)
@@ -72,11 +156,14 @@ namespace DGenerateGUI
                         started = true;
                         continue;
                     }
-                    if(!parser.ProcessLine(line))
+                    if (!parser.ProcessLine(line))
                         break;
                 }
                 listBoxCalls.DataSource = _traceCalls;
             }
+
+            textBoxFilterCalls.Text = "";
+            textBoxFilterData.Text = "";
         }
 
         private static TreeNode ConvertNode(string name, MemberValue value)
